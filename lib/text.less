@@ -1,0 +1,14 @@
+@text-align-list: left center right justify;
+@text-decoration-list: underline line-through none;
+
+each(@text-align-list, {
+    .text-@{value} {
+        text-align: @value;
+    }
+})
+
+each(@text-decoration-list, {
+    .text-@{value} {
+        text-decoration: @value;
+    }
+})

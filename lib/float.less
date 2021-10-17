@@ -1,0 +1,14 @@
+@float-list: right left none;
+@clear-list: right left both none;
+
+each(@float-list, {
+    .float-@{value} {
+        float: @value;
+    }
+});
+
+each(@clear-list, {
+    .clear-@{value} {
+        clear: @value;
+    }
+});

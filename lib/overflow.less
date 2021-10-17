@@ -1,0 +1,17 @@
+@overflow-list: 
+    auto,
+    hidden,
+    visible,
+    scroll;
+
+each(@overflow-list, {
+    .overflow {
+        overflow: @value;
+    }
+    .overflow-x-@{value} {
+        overflow-x: @value;
+    }
+    .overflow-y-@{value} {
+        overflow-y: @value;
+    }
+});

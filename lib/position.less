@@ -1,0 +1,12 @@
+@position-list: 
+    relative,
+    absolute,
+    fixed,
+    static,
+    sticky;
+
+each(@position-list, {
+    .position-@{value} {
+        position: @value;
+    }
+});

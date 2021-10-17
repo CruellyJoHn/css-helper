@@ -1,0 +1,19 @@
+@line-height-base: 14px;
+@line-height-list:
+    xs @line-height-base - 2,
+    s @line-height-base,
+    m @line-height-base + 2,
+    l @line-height-base + 4,
+    xl @line-height-base + 6,
+    2xl @line-height-base + 8,
+    3xl @line-height-base + 10,
+    4xl @line-height-base + 12;
+
+each(@line-height-list, {
+    @suffix: extract(@value, 1);
+    @val: extract(@value, 2);
+
+    .leading-@{suffix} {
+        line-height: @val;
+    }
+});

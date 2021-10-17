@@ -1,0 +1,44 @@
+@font-size-base: 14px;
+@font-size:
+    xs @font-size-base - 2,
+    s @font-size-base,
+    m @font-size-base + 2,
+    l @font-size-base + 4,
+    xl @font-size-base + 6,
+    2xl @font-size-base + 8,
+    3xl @font-size-base + 10,
+    4xl @font-size-base + 12;
+
+@font-weight-base: 400;
+@font-weight: 
+    xs @font-weight-base - 200,
+    s @font-weight-base - 100,
+    m @font-weight-base,
+    l @font-weight-base + 100,
+    xl @font-weight-base + 200,
+    2xl @font-weight-base + 300,
+    3xl @font-weight-base + 400;
+
+@font-style: italic normal;
+
+each(@font-size, {
+    @cls: extract(@value, 1);
+    @size: extract(@value, 2);
+    .f-s-@{cls} {
+        font-size: @size;
+    }
+});
+
+each(@font-weight, {
+    @cls: extract(@value, 1);
+    @size: extract(@value, 2);
+    .f-w-@{cls} {
+        font-weight: @size;
+    }
+});
+
+each(@font-style, {
+    .f-style-@{value} {
+        font-style: @value;
+    }
+});

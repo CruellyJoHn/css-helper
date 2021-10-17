@@ -1,0 +1,46 @@
+@justify-content-list: 
+    start flex-start,
+    end flex-end,
+    between space-between,
+    around space-around,
+    center center,
+    evenly space-evenly;
+
+@align-list:
+    start flex-start,
+    end flex-end,
+    center center;
+
+@direction-list: 
+    row,
+    row-reverse,
+    column,
+    column-reverse;
+
+each(@justify-content-list, {
+    @suffix: extract(@value, 1);
+    @val: extract(@value, 1);
+
+    .justify-content-@{suffix} {
+        justify-content: @val;
+    }
+});
+
+.align-style(@cls){
+    each(@align-list, {
+        @suffix: extract(@value, 1);
+        @val: extract(@value, 1);
+    
+        .align-@{cls}-@{suffix} {
+            align-@{cls}: @val;
+        }
+    });
+}
+.align-style(items);
+.align-style(self);
+
+each(@direction-list, {
+    .flex-@{value} {
+        flex-direction: @value;
+    }
+});

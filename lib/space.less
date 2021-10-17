@@ -1,0 +1,57 @@
+@space-base: 4px;
+@space: 
+    auto auto,
+    0 0,
+    xs @space-base,
+    s @space-base * 1.5
+    m @space-base * 2,
+    l @space-base * 3,
+    xl @space-base * 4,
+    2xl @space-base * 5,
+    3xl @space-base * 6,
+    4xl @space-base * 7,
+    5xl @space-base * 8;
+@space-cls:
+    p padding,
+    m margin;
+
+// 获取除padding-auto之外的所有属性
+.style-without-padding-auto(@prefix, @cls, @val, @style) when not((@val = auto) and (@prefix = p)){
+    .@{prefix}-t-@{cls}{
+        @{style}-top: @val;
+    }
+    .@{prefix}-b-@{cls}{
+        @{style}-bottom: @val;
+    }
+    .@{prefix}-l-@{cls}{
+        @{style}-left: @val;
+    }
+    .@{prefix}-r-@{cls}{
+        @{style}-right: @val;
+    }
+    .@{prefix}-x-@{cls}{
+        @{style}-left: @val;
+        @{style}-right: @val;
+    }
+    .@{prefix}-y-@{cls}{
+        @{style}-top: @val;
+        @{style}-bottom: @val;
+    }
+}
+
+.for-each(@list, @prefix, @style){
+    each(@list, {
+        @cls: extract(@value, 1);
+        @val: extract(@value, 2);
+        
+        .style-without-padding-auto(@prefix, @cls, @val, @style);
+    })
+}
+
+each(@space-cls, {
+    @prefix: extract(@value, 1);
+    @style: extract(@value, 2);
+
+    .for-each(@space, @prefix, @style);
+})
+

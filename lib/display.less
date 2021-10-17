@@ -1,0 +1,14 @@
+@display-list: 
+    none,
+    block,
+    inline-block,
+    flex,
+    inline-flex,
+    table,
+    list-item;
+
+each(@display-list, {
+    .d-@{value} {
+        display: @value;
+    }
+})
